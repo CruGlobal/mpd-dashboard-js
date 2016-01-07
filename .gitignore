@@ -1,0 +1,12 @@
+# WebStorm, PHPStorm
+.idea/
+
+# Node (npm) - gulp
+node_modules/
+onesky.json
+
+# Bower
+bower_components
+
+# Project
+dist/

@@ -1,0 +1,27 @@
+<div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container" ng-init="navCollapsed = true">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" aria-expanded="false" aria-controls="navbar" ng-click="navCollapsed = !navCollapsed">
+					<span class="sr-only" translate>Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">MPD Dashboard</a>
+			</div>
+
+			<div class="navbar-collapse collapse" uib-collapse="navCollapsed">
+				<p class="navbar-text" ui-view="title"></p>
+
+				<ul class="nav navbar-nav" ui-view="navigation"></ul>
+
+				<div class="navbar-form navbar-right" ui-view="navbarForm"></div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div ui-view></div>
+	</div>
+	<div ui-view="footer"></div>
+</div>

@@ -1,0 +1,119 @@
+<div>
+	<div class="row" ng-if="staffAccountCtrl.incorrect_association">
+		<div class="col-xs-12">
+			<nav class="navbar navbar-danger navbar-section">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<span class="navbar-brand" translate>This staff account has been marked as incorrect association.</span>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<nav class="navbar navbar-inverse navbar-section">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<span class="navbar-brand" translate>Budget vs Actual</span>
+					</div>
+					<div class="navbar-form navbar-right">
+						<div class="btn-group" uib-dropdown>
+							<button type="button" class="btn btn-danger" uib-dropdown-toggle>
+								<span class="glyphicon glyphicon-cog"></span> <span class="caret"></span>
+							</button>
+							<ul class="uib-dropdown-menu" role="menu">
+								<li role="menuitem">
+									<a href ng-click="staffAccountCtrl.reportIncorrectAssociation()">Report Incorrect Association</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="dashboard-well budget-trend">
+				<div class="chart-colors">
+					<div class="color1"><!-- Balance --></div>
+					<div class="color2"><!-- Income --></div>
+					<div class="color3"><!-- Expense --></div>
+					<div class="color4"><!-- To Raise --></div>
+					<div class="color5"><!-- Expense Budget --></div>
+				</div>
+				<div google-chart chart="staffAccountCtrl.budgetTrend" agc-on-select="staffAccountCtrl.hideTrendSeries(selectedItem)" style="width: 100%; height: 400px;"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-7">
+			<nav class="navbar navbar-inverse navbar-section">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<span class="navbar-brand" translate>Ave Income - by type (over year)</span>
+					</div>
+				</div>
+			</nav>
+			<div class="dashboard-well income-breakdown">
+				<div class="chart-colors">
+					<div class="color1"><!-- Year --></div>
+					<div class="color2"><!-- Quarter --></div>
+					<div class="color3"><!-- Month --></div>
+				</div>
+				<div google-chart chart="staffAccountCtrl.incomeBreakdown" style="width: 100%; height:300px;"></div>
+			</div>
+		</div>
+		<div class="col-sm-5">
+
+			<nav class="navbar navbar-inverse navbar-section">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<span class="navbar-brand" translate>MPD Analysis</span>
+					</div>
+				</div>
+			</nav>
+			<div class="dashboard-well">
+				<table class="table table-mpd-analysis">
+					<tbody>
+					<tr>
+						<td ng-switch="staffAccountCtrl.mpdAnalysis.status">
+							<img ng-switch-when="GREEN" src="img/green_light.png" />
+							<img ng-switch-when="YELLOW" src="img/yellow_light.png" />
+							<img ng-switch-when="RED" src="img/red_light.png" />
+						</td>
+						<td ng-switch="staffAccountCtrl.mpdAnalysis.message">
+							<span ng-switch-when="HEALTHY">This staff account appears healthy.</span>
+							<span ng-switch-when="NOT_ENOUGH_MONTHS">Our analysis shows that this account will have insufficient funds within {{staffAccountCtrl.mpdAnalysis.months}} months.</span>
+							<span ng-switch-when="NOT_ENOUGH_MONTH">This account does not have enough balance to cover 1 months expenses.</span>
+							<span ng-switch-when="NEGATIVE_BALANCE">Account balance is currently negative.</span>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<nav class="navbar navbar-inverse navbar-section">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<span class="navbar-brand" translate>Average Support</span>
+					</div>
+				</div>
+			</nav>
+			<div class="dashboard-well">
+				<table class="table table-striped table-average-support">
+					<thead>
+					<tr>
+						<th>Over the past:</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr ng-repeat="section in staffAccountCtrl.averageSupport">
+						<td>{{section.period}}</td>
+						<td>{{section.value | percent}}</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</div>
+</div>

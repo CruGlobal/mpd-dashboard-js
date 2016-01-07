@@ -1,0 +1,29 @@
+.navbar-section {
+	border-radius: @navbar-border-radius @navbar-border-radius 0 0;
+	margin-bottom: 0;
+}
+
+.navbar-inverse .label-primary {
+	background-color: darken(@brand-primary, 12.5%);
+}
+
+.dashboard-well {
+	.well;
+	background-color: lighten(@gray-light, 12.5%);
+	padding-bottom: 0;
+}
+
+nav + .dashboard-well {
+	margin-top: 0;
+	border-radius: 0 0 @navbar-border-radius @navbar-border-radius;
+	padding-top: 0;
+}
+
+.alert-estimated {
+	.alert-info;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin-bottom: 0;
+}

@@ -1,0 +1,13 @@
+<li ng-if="nav.countries.length" ui-sref-active="active">
+	<a href ui-sref="countries" translate>Countries</a>
+</li>
+<li class="dropdown" ng-if="nav.accounts.length" uib-dropdown>
+	<a href class="dropdown-toggle" role="button" aria-expanded="false" uib-dropdown-toggle>
+		<translate>Staff Account</translate>
+		<span class="caret"></span></a>
+	<ul class="dropdown-menu uib-dropdown-menu" role="menu">
+		<li ng-repeat="account in nav.accounts | orderBy:'name'" ui-sref-active="active">
+			<a href ui-sref="staffAccount({id: account.id})">{{account.name}}</a>
+		</li>
+	</ul>
+</li>
