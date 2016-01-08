@@ -1,10 +1,10 @@
 (function ( module ) {
 	'use strict';
 
-	// Enable html5mode
-	module.config( function ( $locationProvider ) {
-		$locationProvider.html5Mode( true );
-	} );
+	//// Enable html5mode
+	//module.config( function ( $locationProvider ) {
+	//	$locationProvider.html5Mode( true );
+	//} );
 
 	// Initialize Application Settings
 	module.config( function ( SettingsProvider ) {
@@ -37,7 +37,20 @@
 		casAuthApi.addManagedApi( Settings.api.mpdDashboard() );
 	} );
 
-	module.run( function ( $log, $rootScope ) {
+	module.run( function ( $log, $rootScope, $location ) {
+		// Configure application for use in iFrame
+		if ( typeof window.parent !== 'undefined' ) {
+			var parentHash = window.parent.location.hash;
+			if ( parentHash ) {
+				$location.path( parentHash.slice( 1 ) );
+			}
+
+			$rootScope.$on( '$locationChangeSuccess', function () {
+				console.log( '$locationChangeSuccess: ', $location.path() );
+				window.parent.location.hash = '#' + $location.path();
+			} );
+		}
+
 		$rootScope.$on( '$stateChangeStart', function () {
 			angular.element( 'div.loading' ).removeClass( 'hide' );
 		} );
