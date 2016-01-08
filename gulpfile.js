@@ -140,7 +140,8 @@ gulp.task( 'scripts', ['clean'], function () {
 		.pipe( sourcemaps.init() )
 		.pipe( concat( 'app.min.js' ) )
 		.pipe( ngAnnotate() )
-//		.pipe( uglify() )
+		// Uglify Caused issues with angular
+		// .pipe( uglify() )
 		.pipe( revisionMap() )
 		.pipe( sourcemaps.write( '.' ) )
 		.pipe( gulp.dest( 'dist/js' ) );
@@ -152,7 +153,8 @@ gulp.task( 'library', ['clean', 'bower'], function () {
 			'src/bower_components/angular-gettext/dist/angular-gettext.js',
 			'src/bower_components/angular-growl-v2/build/angular-growl.js',
 			'src/bower_components/lscache/lscache.js',
-			'src/bower_components/angular-cas-auth-api/dist/cas-auth-api.js'
+			'src/bower_components/angular-cas-auth-api/dist/cas-auth-api.js',
+			'bower_components/iframe-resizer/src/iframeResizer.contentWindow.js'
 		] )
 		.pipe( sourcemaps.init() )
 		.pipe( concat( 'library.min.js' ) )
@@ -169,7 +171,6 @@ gulp.task( 'partials', ['clean'], function () {
 		.pipe( minifyHTML() )
 		.pipe( ngHtml2Js( {
 			moduleName:    'mpdDashboard',
-//			prefix:        'app/',
 			declareModule: false
 		} ) )
 		.pipe( concat( 'templates.min.js' ) )

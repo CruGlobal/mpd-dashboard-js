@@ -1,11 +1,6 @@
 (function ( module ) {
 	'use strict';
 
-	//// Enable html5mode
-	//module.config( function ( $locationProvider ) {
-	//	$locationProvider.html5Mode( true );
-	//} );
-
 	// Initialize Application Settings
 	module.config( function ( SettingsProvider ) {
 		SettingsProvider.setConfig( window.MPDDashboard.config );
