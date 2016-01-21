@@ -12,12 +12,16 @@
 			return config.environment === 'development';
 		};
 
-		this.casAuthApiBaseUrl = function() {
+		this.casAuthApiBaseUrl = function () {
 			return config.api.casAuthApi;
 		};
 
-		this.ticketUrl = function() {
+		this.ticketUrl = function () {
 			return config.api.refresh;
+		};
+
+		this.errorCallback = function () {
+			return config.errorCallback;
 		};
 
 		function apiUrl( base, path ) {
