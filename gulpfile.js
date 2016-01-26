@@ -5,7 +5,8 @@ var gulp        = require( 'gulp' ),
 	del         = require( 'del' ),
 	crypto      = require( 'crypto' ),
 	url         = require( 'url' ),
-	request     = require( 'request' );
+	request     = require( 'request' ),
+	gettext     = require( 'gulp-angular-gettext' );
 
 var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*']
