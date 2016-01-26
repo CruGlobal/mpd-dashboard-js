@@ -5,8 +5,7 @@ var gulp        = require( 'gulp' ),
 	del         = require( 'del' ),
 	crypto      = require( 'crypto' ),
 	url         = require( 'url' ),
-	request     = require( 'request' ),
-	gettext     = require( 'gulp-angular-gettext' );
+	request     = require( 'request' );
 
 var $ = require('gulp-load-plugins')({
 	pattern: ['gulp-*']
@@ -73,7 +72,7 @@ gulp.task( 'html', ['clean', 'bower', 'partials'], function () {
 		.pipe($.sourcemaps.init() )
 		.pipe($.angularFilesort())
 		.pipe($.ngAnnotate())
-		//.pipe($.uglify({ preserveComments: $.uglifySaveLicense }))
+		.pipe($.uglify({ preserveComments: $.uglifySaveLicense }))
 		.pipe($.sourcemaps.write( '.' ) )
 		.pipe(jsFilter.restore)
 		.pipe(cssFilter)
@@ -94,7 +93,6 @@ gulp.task( 'html', ['clean', 'bower', 'partials'], function () {
 
 gulp.task('partials', function () {
 	return gulp.src(['src/**/*.html'])
-		.pipe($.sourcemaps.init() )
 		.pipe($.htmlmin({
 			removeEmptyAttributes: true
 		}))
@@ -130,7 +128,7 @@ gulp.task( 'watch', function () {
 
 gulp.task( 'pot', function () {
 	return gulp.src( ['src/**/*.html', 'src/**/*.js'] )
-		.pipe( gettext.extract( 'mpd-calculator.pot', {} ) )
+		.pipe($.angularGettext.extract( 'mpd-calculator.pot', {} ) )
 		.pipe( gulp.dest( 'src/languages/' ) );
 } );
 
