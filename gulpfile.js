@@ -52,7 +52,7 @@ gulp.task( 'clean', function ( callback ) {
 	del( ['dist', '.tmp'], callback );
 } );
 
-gulp.task( 'html', ['clean', 'bower', 'partials'], function () {
+gulp.task( 'html', ['clean', 'bower', 'copyIframeResizer', 'partials'], function () {
 	var partialsInjectFile = gulp.src('.tmp/partials/templateCacheHtml.js', { read: false });
 	var partialsInjectOptions = {
 		starttag: '<!-- inject:partials -->',
@@ -101,6 +101,11 @@ gulp.task('partials', function () {
 		}))
 		.pipe(gulp.dest('.tmp/partials/'));
 });
+
+gulp.task( 'copyIframeResizer', ['clean'], function () {
+	return gulp.src( ['bower_components/iframe-resizer/js/iframeResizer.min.js'] )
+		.pipe( gulp.dest( 'dist' ) );
+} );
 
 gulp.task( 'images', ['clean'], function () {
 	return gulp.src( ['src/img/**/*.png'] )
