@@ -128,11 +128,11 @@ gulp.task( 'watch', function () {
 
 gulp.task( 'pot', function () {
 	return gulp.src( ['src/**/*.html', 'src/**/*.js'] )
-		.pipe($.angularGettext.extract( 'mpd-calculator.pot', {} ) )
+		.pipe($.angularGettext.extract( 'mpd-dashboard.pot', {} ) )
 		.pipe( gulp.dest( 'src/languages/' ) );
 } );
 
 gulp.task( 'onesky', ['pot'], function () {
-	return gulp.src( 'src/languages/mpd-calculator.pot' )
+	return gulp.src( 'src/languages/mpd-dashboard.pot' )
 		.pipe( uploadToOneSky() );
 } );
