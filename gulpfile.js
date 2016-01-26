@@ -53,7 +53,7 @@ gulp.task( 'clean', function ( callback ) {
 	del( ['dist', '.tmp'], callback );
 } );
 
-gulp.task( 'html', ['clean', 'bower', 'partials', 'htaccess'], function () {
+gulp.task( 'html', ['clean', 'bower', 'partials'], function () {
 	var partialsInjectFile = gulp.src('.tmp/partials/templateCacheHtml.js', { read: false });
 	var partialsInjectOptions = {
 		starttag: '<!-- inject:partials -->',
@@ -107,11 +107,6 @@ gulp.task('partials', function () {
 gulp.task( 'images', ['clean'], function () {
 	return gulp.src( ['src/img/**/*.png'] )
 		.pipe( gulp.dest( 'dist/img' ) );
-} );
-
-gulp.task( 'htaccess', ['clean'], function () {
-	return gulp.src( 'src/.htaccess' )
-		.pipe( gulp.dest( 'dist' ) );
 } );
 
 gulp.task( 'bower', function () {
