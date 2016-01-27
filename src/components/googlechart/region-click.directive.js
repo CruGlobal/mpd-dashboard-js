@@ -7,8 +7,8 @@
 			scope:    false,
 			require:  'googleChart',
 			link:     function ( scope, element, attrs, googleChartController ) {
+				callback.$inject = ['chartWrapper', 'chart', 'args'];
 				function callback( chartWrapper, chart, args ) {
-					callback.$inject = ['chartWrapper', 'chart', 'args'];
 					var returnValues = {
 						chartWrapper: chartWrapper,
 						chart:        chart,
