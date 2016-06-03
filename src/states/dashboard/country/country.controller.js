@@ -3,6 +3,8 @@
 
 	function CountryController( $log, $window, $state, mpdHealthData, supportTrendData, country ) {
 		this.$state = $state;
+		this.avg_support = country.attributes.avg_support;
+		this.budget_accuracy = country.attributes.budget_accuracy;
 
 		this.mpdHealth = {
 			type:    'PieChart',
